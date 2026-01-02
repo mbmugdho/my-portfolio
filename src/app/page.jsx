@@ -5,6 +5,7 @@ import Projects from "../sections/Projects";
 import OffHours from "../sections/OffHours";
 import Contact from "../sections/Contact";
 import FocusSection from "tailwind/sections/FocusSection";
+import ProcessSection from "tailwind/sections/ProcessSection";
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Hero />
       <About />
       <FocusSection />
+      <ProcessSection />
       <Skills />
       <Projects />
       <OffHours />
