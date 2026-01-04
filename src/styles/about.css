@@ -1,0 +1,390 @@
+/* ================================
+   ABOUT SECTION STYLES
+   ================================ */
+
+.about-section {
+  position: relative;
+  padding: 2rem 0;
+}
+
+/* ================================
+   HORIZONTAL LOGO MARQUEE
+   ================================ */
+.logo-marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.logo-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: max-content;
+  animation: marqueeLeft 25s linear infinite;
+}
+
+.logo-marquee:hover .logo-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Logo Item */
+.logo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.logo-item:hover {
+  opacity: 1;
+}
+
+.logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(17, 24, 39, 0.08);
+}
+
+.logo-icon-inner {
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 4px;
+  background: rgba(17, 24, 39, 0.25);
+}
+
+.logo-text {
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgba(17, 24, 39, 0.7);
+  white-space: nowrap;
+}
+
+/* ================================
+   WORK SHOWCASE BOARD
+   ================================ */
+.work-board {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: 1.5rem;
+  background: radial-gradient(
+      ellipse 900px 520px at 50% 40%,
+      rgba(243, 246, 251, 0.22) 0%,
+      rgba(243, 246, 251, 0.1) 35%,
+      rgba(243, 246, 251, 0) 70%
+    ),
+    linear-gradient(180deg, #d5e6ff 0%, #9abffb 100%);
+}
+
+@media (min-width: 768px) {
+  .work-board {
+    padding: 2rem;
+  }
+}
+
+/* ================================
+   VERTICAL MARQUEE COLUMNS
+   ================================ */
+.work-columns {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .work-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    height: 520px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .work-columns {
+    gap: 2rem;
+    height: 580px;
+  }
+}
+
+/* Vertical Marquee Container */
+.vmarquee-container {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+/* Vertical Track */
+.vmarquee-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Going Up */
+.vmarquee-track--up {
+  animation: marqueeUp var(--duration, 20s) linear infinite;
+}
+
+/* Going Down */
+.vmarquee-track--down {
+  animation: marqueeDown var(--duration, 20s) linear infinite;
+}
+
+@keyframes marqueeUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes marqueeDown {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Pause on hover */
+.vmarquee-container:hover .vmarquee-track {
+  animation-play-state: paused;
+}
+
+/* Work Card */
+.work-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12),
+    0 4px 12px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.work-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.16),
+    0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.work-card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+}
+
+.work-card-image img {
+  object-fit: cover;
+}
+
+/* ================================
+   MOBILE HORIZONTAL MARQUEE
+   ================================ */
+.mobile-marquee {
+  display: block;
+  overflow: hidden;
+  padding: 1rem 0;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .mobile-marquee {
+    display: none;
+  }
+}
+
+.mobile-marquee-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: marqueeLeft 20s linear infinite;
+}
+
+.mobile-card {
+  position: relative;
+  flex-shrink: 0;
+  width: 280px;
+  height: 175px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.1),
+    0 2px 8px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.mobile-card img {
+  object-fit: cover;
+}
+
+/* ================================
+   OVERLAY EFFECTS
+   ================================ */
+.work-board-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Top/Bottom Fade */
+.overlay-fade {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: linear-gradient(
+    to bottom,
+    rgba(243, 246, 251, 0.5) 0%,
+    transparent 15%,
+    transparent 85%,
+    rgba(243, 246, 251, 0.4) 100%
+  );
+}
+
+/* Center Glow */
+.overlay-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: radial-gradient(
+    ellipse 70% 50% at 50% 35%,
+    rgba(243, 246, 251, 0.25) 0%,
+    transparent 60%
+  );
+}
+
+/* Edge Vignette */
+.overlay-vignette {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: radial-gradient(
+    ellipse 100% 80% at 50% 50%,
+    transparent 50%,
+    rgba(17, 24, 39, 0.06) 100%
+  );
+}
+
+/* Inner Border */
+.overlay-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* ================================
+   ANIMATIONS ON SCROLL
+   ================================ */
+.about-animate-up {
+  opacity: 0;
+  animation: aboutFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes aboutFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.about-delay-1 {
+  animation-delay: 0.1s;
+}
+.about-delay-2 {
+  animation-delay: 0.2s;
+}
+.about-delay-3 {
+  animation-delay: 0.3s;
+}
+
+/* ================================
+   REDUCED MOTION
+   ================================ */
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track,
+  .vmarquee-track,
+  .mobile-marquee-track {
+    animation: none !important;
+  }
+
+  .about-animate-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

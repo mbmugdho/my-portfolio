@@ -83,10 +83,10 @@ export default function FocusSection() {
             Hello!
           </p>
           <h2 className="text-balance text-[18px] font-medium leading-[1.3] tracking-[-0.02em] text-black/90 sm:text-[22px] md:text-[28px] lg:text-[36px] xl:text-[44px] md:leading-[1.2]">
-            Focus is on blending clear strategy, thoughtful design & development, and user
-            empathy to{' '}
+            Focus is on combining clear strategy, scalable frontend development,
+            and user empathy to{' '}
             <span className="font-normal text-black/30">
-              craft experiences that solve real problems
+              create fast, intuitive web experiences that actually work
             </span>
           </h2>
         </div>

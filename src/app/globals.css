@@ -1,8 +1,3 @@
-/* ================================
-   MAIN CSS ENTRY POINT
-   Import Tailwind + Custom Styles
-   ================================ */
-
 @import 'tailwindcss';
 
 /* Base styles & variables */
@@ -19,4 +14,5 @@
 
 /* Section-specific styles */
 @import '../styles/hero.css';
+@import '../styles/about.css'; /* ADD THIS LINE */
 @import '../styles/process.css';
