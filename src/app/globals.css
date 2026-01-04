@@ -14,5 +14,6 @@
 
 /* Section-specific styles */
 @import '../styles/hero.css';
-@import '../styles/about.css'; /* ADD THIS LINE */
+@import '../styles/about.css';
+/* @import '../styles/focus.css'; */
 @import '../styles/process.css';

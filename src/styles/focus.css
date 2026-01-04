@@ -1,0 +1,520 @@
+/* ================================
+   FOCUS SECTION STYLES
+   ================================ */
+
+.focus-section {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  .focus-section {
+    padding: 6rem 0;
+  }
+}
+
+.focus-container {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .focus-container {
+    padding: 0 1.5rem;
+    min-height: 450px;
+  }
+}
+
+@media (min-width: 768px) {
+  .focus-container {
+    padding: 0 2rem;
+    min-height: 500px;
+  }
+}
+
+/* ================================
+   SKILL PILLS
+   ================================ */
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(17, 24, 39, 0.85);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 9999px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1),
+    0 2px 8px rgba(15, 23, 42, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  white-space: nowrap;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-pill:hover {
+  transform: scale(1.05);
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.14),
+    0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+@media (min-width: 640px) {
+  .skill-pill {
+    padding: 0.625rem 1rem;
+    font-size: 12px;
+    gap: 0.625rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .skill-pill {
+    padding: 0.75rem 1.25rem;
+    font-size: 13px;
+  }
+}
+
+/* Pill Icon */
+.skill-pill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .skill-pill-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (min-width: 768px) {
+  .skill-pill-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.skill-pill-icon svg {
+  width: 10px;
+  height: 10px;
+}
+
+@media (min-width: 640px) {
+  .skill-pill-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (min-width: 768px) {
+  .skill-pill-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Icon Colors */
+.skill-pill-icon--orange {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+}
+.skill-pill-icon--sky {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+}
+.skill-pill-icon--neutral {
+  background: linear-gradient(135deg, #404040, #262626);
+}
+.skill-pill-icon--yellow {
+  background: linear-gradient(135deg, #facc15, #eab308);
+}
+.skill-pill-icon--pink {
+  background: linear-gradient(135deg, #ec4899, #db2777);
+}
+.skill-pill-icon--green {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+/* ================================
+   PILLS CONTAINER - LEFT SIDE
+   ================================ */
+.focus-pills-left {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .focus-pills-left {
+    left: 1rem;
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .focus-pills-left {
+    left: 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .focus-pills-left {
+    left: 2.5rem;
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .focus-pills-left {
+    left: 4rem;
+  }
+}
+
+/* ================================
+   PILLS CONTAINER - RIGHT SIDE
+   ================================ */
+.focus-pills-right {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .focus-pills-right {
+    right: 1rem;
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .focus-pills-right {
+    right: 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .focus-pills-right {
+    right: 2.5rem;
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .focus-pills-right {
+    right: 4rem;
+  }
+}
+
+/* Pill Item Wrapper */
+.focus-pill-item {
+  pointer-events: auto;
+}
+
+/* Curved Indentation */
+.focus-pill-item--indent-left {
+  margin-left: 10px;
+}
+
+.focus-pill-item--indent-right {
+  margin-right: 10px;
+}
+
+@media (min-width: 640px) {
+  .focus-pill-item--indent-left {
+    margin-left: 15px;
+  }
+  .focus-pill-item--indent-right {
+    margin-right: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .focus-pill-item--indent-left {
+    margin-left: 20px;
+  }
+  .focus-pill-item--indent-right {
+    margin-right: 20px;
+  }
+}
+/* ================================
+   FLOATING ANIMATIONS (Same as Hero Badges)
+   ================================ */
+
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floatDownUp {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+/* Left Pills */
+.focus-float-1 {
+  animation: floatUpDown 3.5s ease-in-out infinite;
+}
+
+.focus-float-2 {
+  animation: floatDownUp 4s ease-in-out infinite;
+}
+
+.focus-float-3 {
+  animation: floatUpDown 3.8s ease-in-out infinite;
+}
+
+/* Right Pills */
+.focus-float-4 {
+  animation: floatDownUp 3.6s ease-in-out infinite;
+}
+
+.focus-float-5 {
+  animation: floatUpDown 4.2s ease-in-out infinite;
+}
+
+.focus-float-6 {
+  animation: floatDownUp 3.4s ease-in-out infinite;
+}
+
+/* ================================
+   CENTER TEXT
+   ================================ */
+.focus-text {
+  text-align: center;
+  max-width: 280px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  position: relative;
+  z-index: 5;
+}
+
+@media (min-width: 480px) {
+  .focus-text {
+    max-width: 340px;
+  }
+}
+
+@media (min-width: 640px) {
+  .focus-text {
+    max-width: 420px;
+    padding: 0 4rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .focus-text {
+    max-width: 520px;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .focus-text {
+    max-width: 650px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .focus-text {
+    max-width: 750px;
+  }
+}
+
+/* Greeting */
+.focus-greeting {
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(17, 24, 39, 0.75);
+  font-family: var(--font-serif), Georgia, serif;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .focus-greeting {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .focus-greeting {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Heading */
+.focus-heading {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: rgba(17, 24, 39, 0.9);
+  text-wrap: balance;
+}
+
+@media (min-width: 640px) {
+  .focus-heading {
+    font-size: 1.375rem;
+    line-height: 1.3;
+  }
+}
+
+@media (min-width: 768px) {
+  .focus-heading {
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
+}
+
+@media (min-width: 1024px) {
+  .focus-heading {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .focus-heading {
+    font-size: 2.75rem;
+  }
+}
+
+.focus-heading-fade {
+  font-weight: 400;
+  color: rgba(17, 24, 39, 0.35);
+}
+
+/* ================================
+   ENTRANCE ANIMATIONS
+   ================================ */
+.focus-animate-up {
+  opacity: 0;
+  animation: focusFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes focusFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.focus-animate-left {
+  opacity: 0;
+  animation: focusFadeLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes focusFadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+.focus-animate-right {
+  opacity: 0;
+  animation: focusFadeRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes focusFadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+.focus-delay-1 {
+  animation-delay: 0.1s;
+}
+.focus-delay-2 {
+  animation-delay: 0.2s;
+}
+.focus-delay-3 {
+  animation-delay: 0.3s;
+}
+.focus-delay-4 {
+  animation-delay: 0.4s;
+}
+.focus-delay-5 {
+  animation-delay: 0.5s;
+}
+.focus-delay-6 {
+  animation-delay: 0.6s;
+}
+.focus-delay-7 {
+  animation-delay: 0.7s;
+}
+
+/* ================================
+   REDUCED MOTION
+   ================================ */
+@media (prefers-reduced-motion: reduce) {
+  .focus-float-1,
+  .focus-float-2,
+  .focus-float-3,
+  .focus-float-4,
+  .focus-float-5,
+  .focus-float-6,
+  .focus-animate-up,
+  .focus-animate-left,
+  .focus-animate-right {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

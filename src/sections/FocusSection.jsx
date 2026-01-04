@@ -1,21 +1,31 @@
-const BoltIcon = ({ className = 'h-3.5 w-3.5 text-white' }) => (
+'use client'
+
+import { motion } from 'framer-motion'
+
+/* ================================
+   BOLT ICON
+   ================================ */
+const BoltIcon = () => (
   <svg
     viewBox="0 0 24 24"
     fill="currentColor"
-    className={className}
+    className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 text-white"
     aria-hidden="true"
   >
     <path d="M13 2L3 14h7l-1 8 12-14h-7l-1-6z" />
   </svg>
 )
 
+/* ================================
+   SKILL PILL COMPONENT
+   ================================ */
 function SkillPill({ colorClass, label }) {
   return (
-    <div className="inline-flex items-center gap-1.5 rounded-full bg-white px-2 py-1.5 text-[10px] shadow-[0_14px_26px_rgba(0,0,0,0.10)] ring-1 ring-black/5 sm:gap-2 sm:px-3 sm:py-2 sm:text-[11px] md:px-4 md:text-[13px]">
+    <div className="inline-flex items-center gap-1.5 rounded-full bg-white px-2 py-1.5 text-[10px] shadow-[0_14px_26px_rgba(0,0,0,0.10)] ring-1 ring-black/5 sm:gap-2 sm:px-3 sm:py-2 sm:text-[11px] md:px-4 md:text-[13px] hover:scale-105 transition-transform duration-300">
       <span
         className={`grid h-4 w-4 place-items-center rounded-full sm:h-5 sm:w-5 md:h-6 md:w-6 ${colorClass}`}
       >
-        <BoltIcon className="h-2.5 w-2.5 text-white sm:h-3 sm:w-3 md:h-3.5 md:w-3.5" />
+        <BoltIcon />
       </span>
       <span className="whitespace-nowrap font-medium text-black/80">
         {label}
@@ -24,55 +34,125 @@ function SkillPill({ colorClass, label }) {
   )
 }
 
+/* ================================
+   FLOATING PILL WITH FRAMER MOTION
+   ================================ */
+function FloatingPill({
+  children,
+  duration = 3.5,
+  direction = 'up',
+  delay = 0,
+}) {
+  return (
+    <motion.div
+      animate={{
+        y: direction === 'up' ? [0, -10, 0] : [0, 10, 0],
+      }}
+      transition={{
+        duration: duration,
+        repeat: Infinity,
+        ease: 'easeInOut',
+        delay: delay,
+      }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+/* ================================
+   FOCUS SECTION
+   ================================ */
 export default function FocusSection() {
   const left = [
-    { label: 'Product Design', colorClass: 'bg-orange-500', indent: true },
-    { label: 'UX Design', colorClass: 'bg-sky-500', indent: false },
-    { label: 'User Research', colorClass: 'bg-neutral-700', indent: true },
+    {
+      label: 'Product Design',
+      colorClass: 'bg-orange-500',
+      indent: true,
+      duration: 3.5,
+      direction: 'up',
+      delay: 0,
+    },
+    {
+      label: 'UX Design',
+      colorClass: 'bg-sky-500',
+      indent: false,
+      duration: 4,
+      direction: 'down',
+      delay: 0.5,
+    },
+    {
+      label: 'User Research',
+      colorClass: 'bg-neutral-700',
+      indent: true,
+      duration: 3.8,
+      direction: 'up',
+      delay: 1,
+    },
   ]
 
   const right = [
-    { label: 'Design Systems', colorClass: 'bg-yellow-400', indent: true },
-    { label: 'Usability Testing', colorClass: 'bg-pink-500', indent: false },
-    { label: 'Brand Identity', colorClass: 'bg-green-500', indent: true },
-  ]
-
-  const leftAnimations = ['float-top', 'float-middle', 'float-bottom']
-  const rightAnimations = [
-    'float-top-alt',
-    'float-middle-alt',
-    'float-bottom-alt',
+    {
+      label: 'Design Systems',
+      colorClass: 'bg-yellow-400',
+      indent: true,
+      duration: 3.6,
+      direction: 'down',
+      delay: 0.3,
+    },
+    {
+      label: 'Usability Testing',
+      colorClass: 'bg-pink-500',
+      indent: false,
+      duration: 4.2,
+      direction: 'up',
+      delay: 0.8,
+    },
+    {
+      label: 'Brand Identity',
+      colorClass: 'bg-green-500',
+      indent: true,
+      duration: 3.4,
+      direction: 'down',
+      delay: 0.6,
+    },
   ]
 
   return (
-    <section className="">
-      <div className="relative mx-auto max-w-7xl overflow-hidden px-4 py-12 sm:py-16 md:py-24">
-        {/* Left pills - curved like "(" */}
+    <section className="relative overflow-hidden">
+      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:py-16 md:py-24">
+        {/* Left pills */}
         <div className="pointer-events-none absolute left-1 top-1/2 flex -translate-y-1/2 flex-col gap-6 sm:left-2 sm:gap-8 md:left-4 md:gap-12 lg:left-8 xl:left-16">
-          {left.map((item, index) => (
+          {left.map((item) => (
             <div
               key={item.label}
-              className={leftAnimations[index]}
-              style={{
-                marginLeft: item.indent ? '15px' : '0px',
-              }}
+              style={{ marginLeft: item.indent ? '15px' : '0px' }}
             >
-              <SkillPill colorClass={item.colorClass} label={item.label} />
+              <FloatingPill
+                duration={item.duration}
+                direction={item.direction}
+                delay={item.delay}
+              >
+                <SkillPill colorClass={item.colorClass} label={item.label} />
+              </FloatingPill>
             </div>
           ))}
         </div>
 
-        {/* Right pills - curved like ")" */}
+        {/* Right pills */}
         <div className="pointer-events-none absolute right-1 top-1/2 flex -translate-y-1/2 flex-col items-end gap-6 sm:right-2 sm:gap-8 md:right-4 md:gap-12 lg:right-8 xl:right-16">
-          {right.map((item, index) => (
+          {right.map((item) => (
             <div
               key={item.label}
-              className={rightAnimations[index]}
-              style={{
-                marginRight: item.indent ? '15px' : '0px',
-              }}
+              style={{ marginRight: item.indent ? '15px' : '0px' }}
             >
-              <SkillPill colorClass={item.colorClass} label={item.label} />
+              <FloatingPill
+                duration={item.duration}
+                direction={item.direction}
+                delay={item.delay}
+              >
+                <SkillPill colorClass={item.colorClass} label={item.label} />
+              </FloatingPill>
             </div>
           ))}
         </div>
