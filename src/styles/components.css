@@ -1,0 +1,162 @@
+/* ================================
+   REUSABLE COMPONENT STYLES
+   ================================ */
+
+/* -------- MARQUEE -------- */
+.marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeX var(--marquee-duration, 25s) linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Vertical Marquee */
+.vmarquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.vmarquee-track {
+  display: flex;
+  flex-direction: column;
+}
+
+.vmarquee-track--up {
+  animation: marqueeYUp var(--vmarquee-duration, 20s) linear infinite;
+}
+
+.vmarquee-track--down {
+  animation: marqueeYDown var(--vmarquee-duration, 20s) linear infinite;
+}
+
+/* -------- FLOATING PILLS -------- */
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  border-radius: var(--radius-full);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.skill-pill-icon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: white;
+}
+
+/* -------- CARDS -------- */
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* -------- BUTTONS -------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  transition: all 0.3s var(--ease-out-expo);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: rgb(var(--color-primary));
+  color: rgb(var(--color-neutral));
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 10px 25px rgba(154, 191, 251, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(154, 191, 251, 0.4);
+}
+
+.btn-secondary {
+  background: rgb(var(--color-neutral));
+  color: rgb(var(--color-mist-50));
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid rgba(var(--color-neutral), 0.2);
+  color: rgb(var(--color-neutral));
+}
+
+.btn-outline:hover {
+  border-color: rgba(var(--color-neutral), 0.4);
+  background: rgba(var(--color-neutral), 0.05);
+}
+
+/* -------- SECTION HEADING -------- */
+.section-kicker {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgb(var(--color-primary));
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: rgb(var(--color-neutral));
+  line-height: 1.1;
+}
+
+.section-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(var(--color-neutral), 0.7);
+  margin-top: 1rem;
+  max-width: 600px;
+}

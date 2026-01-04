@@ -31,7 +31,7 @@ export default function ProcessSection() {
       <div className="site-container relative">
         {/* Header */}
         <div className="text-center">
-          <p className="process-kicker mb-3">Our Process Explained</p>
+          <p className="process-kicker mb-3">Work Process Explained</p>
           <h2 className="process-title text-[clamp(34px,4.2vw,64px)] font-medium">
             Here's how it works
           </h2>

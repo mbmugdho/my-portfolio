@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Home, User, Briefcase, Mail } from 'lucide-react'
 
@@ -12,21 +12,63 @@ const NAV_ITEMS = [
 ]
 
 export default function Navbar() {
-  const [active, setActive] = useState('home') 
+  const [active, setActive] = useState('home')
+  const [scrolled, setScrolled] = useState(false)
+
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+
+      // Update active section based on scroll
+      const sections = NAV_ITEMS.map((item) => document.getElementById(item.id))
+      const scrollPosition = window.scrollY + 150
+
+      sections.forEach((section, index) => {
+        if (section) {
+          const sectionTop = section.offsetTop
+          const sectionHeight = section.offsetHeight
+
+          if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeight
+          ) {
+            setActive(NAV_ITEMS[index].id)
+          }
+        }
+      })
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <nav className="sticky top-0 z-40 flex justify-center py-3 px-2">
-      <div
-        className="
-          inline-flex items-center gap-2
+    <motion.nav
+      className={`
+        fixed top-0 left-0 right-0 z-50
+        flex justify-center 
+        py-3 px-4
+        transition-all duration-300
+        ${scrolled ? 'py-2' : 'py-3'}
+      `}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <motion.div
+        className={`
+          inline-flex items-center gap-1 sm:gap-2
           rounded-full
-          bg-neutral/80 backdrop-blur
-          px-2 py-1
-          shadow-sm
-          overflow-x-auto
-          scrollbar-hide
-          max-w-full
-        "
+          px-2 py-1.5
+          transition-all duration-300
+          ${
+            scrolled
+              ? 'bg-neutral/95 backdrop-blur-xl shadow-lg shadow-black/10'
+              : 'bg-neutral/80 backdrop-blur-md'
+          }
+        `}
+        layout
       >
         {NAV_ITEMS.map((item) => {
           const Icon = item.icon
@@ -38,36 +80,34 @@ export default function Navbar() {
               href={`#${item.id}`}
               onClick={() => setActive(item.id)}
               className={`
-                group flex items-center gap-2 rounded-full px-3 py-1
-                text-sm sm:text-xs
-                whitespace-nowrap
-                ${isActive ? 'bg-base-100 text-neutral shadow-sm' : 'text-base-100/80'}
+                relative group flex items-center gap-2 
+                rounded-full px-3 py-2 sm:px-4
+                text-sm font-medium
+                transition-colors duration-200
+                ${
+                  isActive
+                    ? 'bg-base-100 text-neutral shadow-sm'
+                    : 'text-base-100/70 hover:text-base-100'
+                }
               `}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {/* Icon  reveal korbe hover or active */}
+              {/* Icon */}
               <motion.span
                 className="flex-shrink-0"
-                initial={{ y: 6, opacity: 0 }}
-                animate={isActive ? { y: 0, opacity: 1 } : {}}
-                whileHover={{ y: 0, opacity: 1 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                initial={{ opacity: 0.7 }}
+                animate={{ opacity: isActive ? 1 : 0.7 }}
               >
                 <Icon size={16} />
               </motion.span>
 
-              {/* Text: slide right  on hover or active */}
-              <motion.span
-                initial={false}
-                animate={isActive ? { x: 4 } : {}}
-                whileHover={{ x: 4 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              >
-                {item.label}
-              </motion.span>
+              {/* Label - Hidden on mobile */}
+              <span className="hidden sm:inline-block">{item.label}</span>
             </motion.a>
           )
         })}
-      </div>
-    </nav>
+      </motion.div>
+    </motion.nav>
   )
 }
