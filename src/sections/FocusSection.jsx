@@ -120,7 +120,7 @@ export default function FocusSection() {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:py-16 md:py-24">
+      <div className="relative mx-auto max-w-7xl pt-5 pb-2 md:pt-7 md:pb-5">
         {/* Left pills */}
         <div className="pointer-events-none absolute left-1 top-1/2 flex -translate-y-1/2 flex-col gap-6 sm:left-2 sm:gap-8 md:left-4 md:gap-12 lg:left-8 xl:left-16">
           {left.map((item) => (

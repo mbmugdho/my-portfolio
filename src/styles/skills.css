@@ -1,0 +1,350 @@
+.skills {
+  padding: 4.5rem 0;
+  background: rgba(243, 246, 251, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skills::before {
+  content: '';
+  position: absolute;
+  inset: -80px;
+  
+  pointer-events: none;
+}
+
+.skills__container {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.skills__header {
+  text-align: center;
+  margin-bottom: 2.2rem;
+}
+
+.skills__kicker {
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(17, 24, 39, 0.6);
+  font-family: var(--font-serif), Georgia, serif;
+  margin-bottom: 0.5rem;
+}
+
+.skills__title {
+  font-size: clamp(34px, 5vw, 52px);
+  font-weight: 650;
+  color: rgba(17, 24, 39, 0.92);
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.skills__titleSoft {
+  color: rgba(17, 24, 39, 0.38);
+  font-weight: 500;
+}
+
+.skills__desc {
+  font-size: 16px;
+  color: rgba(17, 24, 39, 0.6);
+  max-width: 640px;
+  margin: 0.9rem auto 0;
+  line-height: 1.8;
+}
+
+/* Grid */
+.skills__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .skills__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================
+   GLASS CARD + MIRROR BORDER
+   ========================= */
+.skillsCard {
+  position: relative;
+  border-radius: 22px;
+  padding: 1px; /* creates a 1px “frame” */
+  overflow: hidden;
+  transform: translateZ(0); /* crispness */
+}
+
+/* The animated “moving mirror” border */
+.skillsCard__mirror {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  padding: 1px;
+
+  /* border gradient */
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0.15)
+  );
+
+  /* animate the gradient like a mirror reflection */
+  background-size: 240% 240%;
+  animation: mirrorMove 3.2s linear infinite;
+
+  /* keep it subtle */
+  opacity: 0.85;
+}
+
+/* Accent-tint the mirror slightly per card */
+.accent-blue .skillsCard__mirror {
+  background-image: linear-gradient(
+    120deg,
+    rgba(59, 130, 246, 0.1),
+    rgba(255, 255, 255, 0.95),
+    rgba(59, 130, 246, 0.1)
+  );
+}
+.accent-green .skillsCard__mirror {
+  background-image: linear-gradient(
+    120deg,
+    rgba(34, 197, 94, 0.1),
+    rgba(255, 255, 255, 0.95),
+    rgba(34, 197, 94, 0.1)
+  );
+}
+.accent-purple .skillsCard__mirror {
+  background-image: linear-gradient(
+    120deg,
+    rgba(168, 85, 247, 0.1),
+    rgba(255, 255, 255, 0.95),
+    rgba(168, 85, 247, 0.1)
+  );
+}
+
+@keyframes mirrorMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 220% 50%;
+  }
+}
+
+/* Inner glass content (sits above the mirror frame) */
+.skillsCard__inner {
+  position: relative;
+  border-radius: 21px; /* 1px less so it fits inside the frame */
+  padding: 1.25rem 1.25rem 1.35rem;
+
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(14px);
+  overflow: hidden;
+}
+
+.skillsCard__inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.55),
+    transparent 40%,
+    rgba(255, 255, 255, 0.18)
+  );
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.skillsCard__glow {
+  position: absolute;
+  inset: -45%;
+  opacity: 1;
+  pointer-events: none;
+  filter: blur(22px);
+}
+
+.accent-blue .skillsCard__glow {
+  background: radial-gradient(
+    circle at 30% 20%,
+    rgba(59, 130, 246, 0.28),
+    transparent 55%
+  );
+}
+.accent-green .skillsCard__glow {
+  background: radial-gradient(
+    circle at 30% 20%,
+    rgba(34, 197, 94, 0.24),
+    transparent 55%
+  );
+}
+.accent-purple .skillsCard__glow {
+  background: radial-gradient(
+    circle at 30% 20%,
+    rgba(168, 85, 247, 0.24),
+    transparent 55%
+  );
+}
+
+.skillsCard__top {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.skillsCard__badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: rgba(17, 24, 39, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.skillsCard__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 850;
+  color: rgba(17, 24, 39, 0.9);
+  position: relative;
+  z-index: 1;
+}
+
+.skillsCard__subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 13px;
+  color: rgba(17, 24, 39, 0.55);
+  position: relative;
+  z-index: 1;
+}
+
+.skillsCard__ringWrap {
+  display: flex;
+  justify-content: center;
+  padding: 1.15rem 0 0.85rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Big ring */
+.bigRing {
+  width: 140px;
+  height: 140px;
+  position: relative;
+  border-radius: 999px;
+}
+
+.bigRing__svg {
+  width: 140px;
+  height: 140px;
+  transform: rotate(-90deg);
+}
+
+.bigRing__track {
+  fill: none;
+  stroke: rgba(15, 23, 42, 0.1);
+  stroke-width: 12;
+}
+
+.bigRing__progress {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.bigRing__shine {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 14 26;
+  opacity: 0.55;
+}
+
+.bigRing__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(17, 24, 39, 0.9);
+  letter-spacing: -0.03em;
+}
+
+.bigRing__value {
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.bigRing__pct {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(17, 24, 39, 0.55);
+}
+
+/* ring colors */
+.accent-blue .bigRing__progress {
+  stroke: rgb(99, 102, 241);
+}
+.accent-green .bigRing__progress {
+  stroke: rgb(34, 197, 94);
+}
+.accent-purple .bigRing__progress {
+  stroke: rgb(168, 85, 247);
+}
+
+/* Skill pills */
+.skillsCard__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.9rem;
+  position: relative;
+  z-index: 1;
+  justify-content: center;
+}
+
+.skillsPill {
+  font-size: 12.5px;
+  font-weight: 650;
+  color: rgba(17, 24, 39, 0.78);
+
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .skillsCard__mirror {
+    animation: none;
+  }
+  .bigRing__shine {
+    display: none;
+  }
+}

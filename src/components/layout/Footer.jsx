@@ -1,14 +1,41 @@
+'use client'
+
+import Link from 'next/link'
+import '../../styles/footer.css'
+
+const links = [
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about-me' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
+]
+
 export default function Footer() {
+  const year = new Date().getFullYear()
+
   return (
-    <footer className="border-t border-base-200">
-      <div className="mx-auto max-w-content px-4 py-6 text-xs text-neutral/60 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center justify-between gap-2 sm:flex-row">
-          <p>© {new Date().getFullYear()} Montasir. All rights reserved.</p>
-          <p className="text-[11px]">
-            Built with Next.js, Tailwind CSS.
-          </p>
+    <footer className="ft">
+      <div className="ft__container">
+        {/* top nav row */}
+        <div className="ft__top">
+          <nav className="ft__nav" aria-label="Footer navigation">
+            {links.map((l) => (
+              <Link key={l.href} href={l.href} className="ft__link">
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+
+          <p className="ft__copy">© {year} Montasir. All rights reserved.</p>
+        </div>
+
+        {/* BIG, full-width, uppercase, tracked, bottom-cut */}
+        <div className="ft__cut">
+          <div className="ft__brand" aria-label="Montasir">
+            Montasir
+          </div>
         </div>
       </div>
     </footer>
-  );
+  )
 }

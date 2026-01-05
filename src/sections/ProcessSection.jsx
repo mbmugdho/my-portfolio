@@ -27,7 +27,7 @@ export default function ProcessSection() {
   ]
 
   return (
-    <section className="process section-padding">
+    <section className="process pt-8 pb-3 md:pt-8 md:pb-3">
       <div className="site-container relative">
         {/* Header */}
         <div className="text-center">

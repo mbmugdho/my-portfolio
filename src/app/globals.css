@@ -15,5 +15,9 @@
 /* Section-specific styles */
 @import '../styles/hero.css';
 @import '../styles/about.css';
-/* @import '../styles/focus.css'; */
+@import '../styles/about-me.css';
+@import '../styles/focus.css';
 @import '../styles/process.css';
+@import '../styles/skills.css';
+@import '../styles/projects.css';
+@import '../styles/footer.css';

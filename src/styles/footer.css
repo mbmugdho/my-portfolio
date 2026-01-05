@@ -1,0 +1,108 @@
+.ft {
+  background: "rgba(243, 246, 251, 1)";
+  border-top: 1px solid rgba(17, 24, 39, 0.08);
+  overflow: hidden;
+}
+
+.ft__container {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 26px 0 0;
+}
+
+/* top row */
+.ft__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 18px;
+}
+
+.ft__nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.ft__link {
+  text-decoration: none;
+  font-size: 16px;
+  color: rgba(17, 24, 39, 0.78);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: color 0.15s ease;
+}
+
+.ft__link:hover {
+  color: rgba(17, 24, 39, 0.95);
+}
+
+.ft__copy {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(17, 24, 39, 0.55);
+  white-space: nowrap;
+}
+
+/* === BIG NAME (FULL WIDTH, TRACKED, UPPERCASE, CROPPED) === */
+.ft__cut {
+  width: 100%;
+  overflow: hidden;
+
+  /* show MOST of the word (≈ 85–90%) */
+  height: clamp(110px, 14vw, 220px);
+
+  display: flex;
+  align-items: flex-end;
+
+  border-top: 1px solid rgba(17, 24, 39, 0.08);
+  padding-top: 14px;
+}
+
+/* This is the text you wanted to be uppercase + tracking-[0.18em] */
+.ft__brand {
+  width: 100%;
+  text-align: center;
+
+  /* your stylish font */
+  font-family: var(--font-serif), Georgia, serif;
+
+  /* big but must span visually across width */
+  font-size: clamp(56px, 10.8vw, 120px);
+
+  /* uppercase + tracking-[0.18em] */
+  text-transform: uppercase;
+  letter-spacing: 0.60em;
+
+  font-weight: 500;
+  font-style: italic;
+  line-height: 0.9;
+
+  color: rgba(17, 24, 39, 0.95);
+
+  /* push down so the bottom gets clipped */
+  transform: translateY(clamp(8px, 1.1vw, 16px));
+
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .ft__top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ft__copy {
+    white-space: normal;
+  }
+
+  .ft__brand {
+    /* keep the same look, just smaller */
+    font-size: clamp(40px, 12vw, 72px);
+    letter-spacing: 0.14em; /* slightly less so it doesn't overflow */
+  }
+}

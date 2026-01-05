@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Award, Users, Code, Trophy, Clock } from 'lucide-react'
+import { Sparkles, Users, Code, Trophy, Clock } from 'lucide-react'
 import RotatingText from '../components/ui/RotatingText'
 
 export default function Hero() {
@@ -8,8 +8,10 @@ export default function Hero() {
       <div className="hero-inner">
         {/* Award Badge */}
         <div className="hero-award-line font-semibold hero-in-left hero-delay-1">
-          <Award className="h-4 w-4 text-yellow-400 flex-shrink-0" />
-          <span>Personal Website Of The Day 2025</span>
+          <Sparkles className="h-4 w-4" />
+          <span className="tracking-[0.18em]">
+            TURN IDEAS INTO INTERACTIVE EXPERIENCES
+          </span>
         </div>
 
         {/* Hero Stage */}
@@ -115,9 +117,13 @@ export default function Hero() {
           </div>
 
           {/* CTA Button */}
-          <a href="#contact" className="hero-cta hero-in-right hero-delay-5">
-            <span className="hero-cta-icon">→</span>
-            <span>Connect</span>
+          <a
+            href="/Montasir_CV.pdf"
+            download="Montasir_Billah_Mugdho_CV.pdf"
+            className="hero-cta hero-in-right hero-delay-5"
+          >
+            <span className="hero-cta-icon">↓</span>
+            <span>Download CV</span>
           </a>
         </div>
       </div>

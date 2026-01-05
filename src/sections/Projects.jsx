@@ -1,124 +1,190 @@
-'use client'
+// src/sections/Projects.jsx
+"use client";
 
-import Image from 'next/image'
-import SectionWrapper from '../components/layout/SectionWrapper'
-import SectionHeading from '../components/ui/SectionHeading'
-import RevealOnScroll from '../components/animations/RevealOnScroll'
-import { motion } from 'framer-motion'
-import { ExternalLink, Github } from 'lucide-react'
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import "../styles/projects.css";
 
-const projects = [
+const projectsData = [
   {
-    title: 'Project One',
-    description: 'A modern web application built with Next.js and Tailwind CSS',
-    image: '/image01.png',
-    tags: ['Next.js', 'Tailwind', 'Framer Motion'],
-    liveUrl: '#',
-    githubUrl: '#',
+    id: 1,
+    title: "HomeHero",
+    description:
+      "A full-stack home services platform connecting homeowners with trusted service providers. Features include booking management, real-time chat, and secure payment integration.",
+    image: "/project-1.png",
+    liveUrl: "https://homehero-org.netlify.app/",
+    techStack: ["React", "Node.js", "Express", "MongoDB"],
+    type: "Full-Stack MERN",
   },
   {
-    title: 'Project Two',
-    description: 'E-commerce platform with seamless user experience',
-    image: '/image02.png',
-    tags: ['React', 'Node.js', 'MongoDB'],
-    liveUrl: '#',
-    githubUrl: '#',
+    id: 2,
+    title: "SafeHands",
+    description:
+      "A Next.js powered platform for connecting caregivers with families. Built with server-side rendering for optimal performance and SEO, featuring advanced search and filtering capabilities.",
+    image: "/project-2.png",
+    liveUrl: "https://safehands-ltd.vercel.app/",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB"],
+    type: "Next.js Full-Stack",
   },
   {
-    title: 'Project Three',
-    description: 'Dashboard application with real-time data visualization',
-    image: '/image03.png',
-    tags: ['TypeScript', 'D3.js', 'PostgreSQL'],
-    liveUrl: '#',
-    githubUrl: '#',
+    id: 3,
+    title: "AssetVerse",
+    description:
+      "A comprehensive digital asset management system built with the MERN stack. Includes user authentication, asset tracking, analytics dashboard, and team collaboration features.",
+    image: "/project-3.png",
+    liveUrl: "https://assetverse.vercel.app/",
+    techStack: ["React", "Node.js", "Express", "MongoDB"],
+    type: "Full-Stack MERN",
   },
   {
-    title: 'Project Four',
-    description: 'Mobile-first responsive portfolio website',
-    image: '/image04.png',
-    tags: ['Next.js', 'GSAP', 'Tailwind'],
-    liveUrl: '#',
-    githubUrl: '#',
+    id: 4,
+    title: "GameHub",
+    description:
+      "An interactive gaming community platform where users can discover games, read reviews, and connect with fellow gamers. Features dynamic content loading and responsive design.",
+    image: "/project-4.png",
+    liveUrl: "https://gamehub-net.netlify.app/",
+    techStack: ["React", "JavaScript", "REST API", "CSS3"],
+    type: "Frontend React",
   },
-]
+];
 
-export default function Projects() {
+const Projects = () => {
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-in");
+        }
+      });
+    }, observerOptions);
+
+    cardsRef.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleCardClick = (url) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
-    <SectionWrapper id="projects">
-      <SectionHeading
-        kicker="Portfolio"
-        title="Selected Works"
-        description="A collection of projects that showcase my skills and passion"
-      />
+    <section id="projects" className="projects-section">
+      <div className="projects-container">
+        {/* Section Header */}
+        <div className="projects-header">
+          <span className="projects-label">Portfolio</span>
+          <h2 className="projects-title">
+            Featured <span className="text-gradient">Projects</span>
+          </h2>
+          <p className="projects-subtitle">
+            A collection of my recent work showcasing full-stack development
+            expertise with the MERN stack and Next.js
+          </p>
+        </div>
 
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-        {projects.map((project, index) => (
-          <RevealOnScroll
-            key={project.title}
-            delay={index * 0.15}
-            direction={index % 2 === 0 ? 'left' : 'right'}
-          >
-            <motion.article
-              className="group relative overflow-hidden rounded-3xl bg-white shadow-xl"
-              whileHover={{ y: -8 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+        {/* Project Cards Grid */}
+        <div className="projects-grid">
+          {projectsData.map((project, index) => (
+            <a
+              key={project.id}
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              ref={(el) => {
+                cardsRef.current[index] = el;
+              }}
+              className="project-card"
+              style={{ animationDelay: `${index * 0.15}s` }}
+              onClick={(e) => {
+                e.preventDefault();
+                handleCardClick(project.liveUrl);
+              }}
             >
-              {/* Image */}
-              <div className="relative aspect-[16/10] overflow-hidden">
+              {/* Project Image */}
+              <div className="project-image-wrapper">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="project-image"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                {/* Hover overlay links */}
-                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <motion.a
-                    href={project.liveUrl}
-                    className="p-3 bg-white rounded-full shadow-lg"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <ExternalLink className="w-5 h-5 text-neutral" />
-                  </motion.a>
-                  <motion.a
-                    href={project.githubUrl}
-                    className="p-3 bg-white rounded-full shadow-lg"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Github className="w-5 h-5 text-neutral" />
-                  </motion.a>
+                <div className="project-overlay">
+                  <span className="view-project">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                      />
+                    </svg>
+                    View Live Site
+                  </span>
                 </div>
+                <div className="project-type-badge">{project.type}</div>
               </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-neutral group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="mt-2 text-sm text-neutral/70">
-                  {project.description}
-                </p>
+              {/* Project Content */}
+              <div className="project-content">
+                <h3 className="project-name">{project.title}</h3>
+                <p className="project-description">{project.description}</p>
 
-                {/* Tags */}
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-full"
-                    >
-                      {tag}
+                {/* Tech Stack */}
+                <div className="project-tech-stack">
+                  {project.techStack.map((tech, techIndex) => (
+                    <span key={techIndex} className="tech-tag">
+                      {tech}
                     </span>
                   ))}
                 </div>
+
+                {/* View Link */}
+                <div className="project-link">
+                  <span>View Project</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="link-arrow"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                    />
+                  </svg>
+                </div>
               </div>
-            </motion.article>
-          </RevealOnScroll>
-        ))}
+
+              {/* Decorative Glow */}
+              <div className="card-glow"></div>
+            </a>
+          ))}
+        </div>
+
+        
       </div>
-    </SectionWrapper>
-  )
-}
+    </section>
+  );
+};
+
+export default Projects;

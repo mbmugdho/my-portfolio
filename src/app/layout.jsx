@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter, Playfair_Display } from 'next/font/google'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
+import AppShell from 'tailwind/components/animations/AppShell'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${playfair.variable}`}
     >
       <body className="font-sans antialiased">
+        <AppShell>
         {/* Fixed Navbar - Outside of main flow */}
         <Navbar />
 
@@ -39,6 +41,7 @@ export default function RootLayout({ children }) {
 
         {/* Footer */}
         <Footer />
+        </AppShell>
       </body>
     </html>
   )

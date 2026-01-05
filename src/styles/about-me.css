@@ -1,0 +1,310 @@
+.who {
+  padding: clamp(48px, 6vw, 88px) 0;
+  background: rgba(243, 246, 251, 1);
+}
+
+.who__container {
+  width: min(1120px, calc(100% - clamp(18px, 4vw, 40px)));
+  margin: 0 auto;
+}
+
+/* top */
+.who__kicker {
+  margin: 0 0 clamp(12px, 2vw, 18px);
+  text-align: center;
+  font-style: italic;
+  font-size: clamp(12px, 1.6vw, 16px);
+  letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.who__title {
+  margin: 0 0 clamp(22px, 3.5vw, 44px);
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  font-size: clamp(28px, 4.8vw, 64px);
+  line-height: 1.05;
+  color: #0b0b0b;
+  white-space: nowrap;
+}
+
+.who__titleStrong {
+  font-weight: 500;
+  color: #0b0b0b;
+}
+
+.who__titleSoft {
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.35);
+}
+
+/* Always side-by-side */
+.who__rowLayout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: clamp(18px, 4vw, 54px);
+}
+
+.who__left,
+.who__right {
+  min-width: 0;
+}
+
+/* LEFT */
+.who__left {
+  flex: 0 0 auto;
+}
+
+.who__photoStage {
+  perspective: 900px;
+  transform-style: preserve-3d;
+  width: clamp(260px, 42vw, 520px);
+}
+
+.who__photoCard {
+  position: relative;
+  border-radius: clamp(12px, 1.6vw, 18px);
+  overflow: hidden;
+  background: #0d0d0d;
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.12);
+  transform: rotate(-2.2deg);
+  transform-origin: center;
+}
+
+.who__photoCard--alive {
+  animation: whoFloat 5.5s ease-in-out infinite;
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+@keyframes whoFloat {
+  0% {
+    transform: rotate(-2.2deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(-2.2deg) translateY(-8px);
+  }
+  100% {
+    transform: rotate(-2.2deg) translateY(0px);
+  }
+}
+
+.who__shine {
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    circle at 30% 20%,
+    rgba(255, 255, 255, 0.22),
+    transparent 55%
+  );
+  transform: translateZ(20px);
+  pointer-events: none;
+}
+
+.who__photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.05);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.who__leftBar {
+  width: clamp(260px, 42vw, 520px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(10px, 2vw, 18px);
+  padding-top: clamp(10px, 2vw, 18px);
+}
+
+.who__social {
+  display: inline-flex;
+  gap: clamp(10px, 1.6vw, 14px);
+  align-items: center;
+}
+
+.who__icon {
+  width: clamp(28px, 3.4vw, 34px);
+  height: clamp(28px, 3.4vw, 34px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  text-decoration: none;
+  border-radius: clamp(8px, 1.2vw, 10px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.who__icon:hover {
+  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.who__signature {
+  text-align: right;
+  line-height: 1.1;
+}
+
+.who__sigName {
+  font-size: clamp(11px, 1.25vw, 13px);
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.who__sigRole {
+  margin-top: 4px;
+  font-size: clamp(10px, 1.15vw, 12px);
+  color: rgba(0, 0, 0, 0.55);
+}
+
+/* RIGHT */
+.who__right {
+  flex: 1 1 auto;
+  padding-top: clamp(2px, 0.8vw, 6px);
+}
+
+.who__bio {
+  margin: 0 0 clamp(18px, 3vw, 34px);
+  font-size: clamp(13px, 1.55vw, 16px);
+  line-height: 1.85;
+  color: rgba(0, 0, 0, 0.72);
+  max-width: 560px;
+}
+
+/* ========== BOTTOM GRID (Timeline + Education) ========== */
+/* Desktop: Normal stacked layout inside right column */
+.who__bottomGrid {
+  display: block;
+}
+
+.who__timeline {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  max-width: 620px;
+}
+
+.who__item {
+  display: grid;
+  grid-template-columns: 1.1fr 1.25fr 0.65fr;
+  gap: clamp(10px, 2vw, 18px);
+  padding: clamp(10px, 2vw, 16px) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+.who__role {
+  font-size: clamp(11px, 1.25vw, 12.5px);
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.who__company {
+  font-size: clamp(11px, 1.25vw, 12.5px);
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.who__dates {
+  justify-self: end;
+  font-size: clamp(11px, 1.25vw, 12.5px);
+  color: rgba(0, 0, 0, 0.9);
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(6px, 1.1vw, 10px);
+  white-space: nowrap;
+}
+
+.who__arrow {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+/* Education */
+.who__edu {
+  margin-top: clamp(28px, 4vw, 40px);
+  padding-top: clamp(20px, 3vw, 28px);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  max-width: 620px;
+}
+
+.who__eduTitle {
+  margin: 0 0 10px;
+  font-size: clamp(13px, 1.4vw, 14px);
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17, 24, 39, 0.85);
+}
+
+.who__eduText {
+  margin: 0;
+  font-size: clamp(14px, 1.6vw, 16px);
+  line-height: 1.8;
+  color: rgba(17, 24, 39, 0.65);
+}
+
+.who__eduText strong {
+  font-weight: 700;
+  color: rgba(17, 24, 39, 0.9);
+}
+
+/* ========== TABLET & MOBILE: Break out to full width ========== */
+@media (max-width: 1024px) {
+  .who__bottomGrid {
+    /* Break out of parent to span full container width */
+    width: calc(100% + clamp(260px, 42vw, 520px) + clamp(18px, 4vw, 54px));
+    margin-left: calc(
+      -1 * (clamp(260px, 42vw, 520px) + clamp(18px, 4vw, 54px))
+    );
+    margin-top: clamp(24px, 4vw, 40px);
+
+    /* 2-column grid */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 4vw, 32px);
+    align-items: start;
+  }
+
+  .who__timeline {
+    max-width: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .who__edu {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    max-width: none;
+  }
+}
+
+/* ========== MOBILE: Smaller adjustments ========== */
+@media (max-width: 520px) {
+  .who__rowLayout {
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .who__title {
+    white-space: normal;
+  }
+
+  .who__item {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: clamp(8px, 2vw, 12px) 0;
+  }
+
+  .who__dates {
+    justify-self: start;
+  }
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .who__photoCard--alive {
+    animation: none;
+  }
+}

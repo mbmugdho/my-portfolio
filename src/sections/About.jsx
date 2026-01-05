@@ -6,14 +6,14 @@ import Image from 'next/image'
    LOGO DATA
    ================================ */
 const logoItems = [
-  'FocalPoint',
-  'Screentime',
-  'Segment',
-  'Shutterframe',
-  'Lightspeed',
-  'Master',
-  'Acme',
-  'Pixel',
+  'Next.js',
+  'React',
+  'Node.js',
+  'Express',
+  'MongoDB',
+  'TypeScript',
+  'Tailwind CSS',
+  'Vercel',
 ]
 
 /* ================================
@@ -113,8 +113,8 @@ function MobileMarquee({ images }) {
    ABOUT SECTION
    ================================ */
 export default function About() {
-  const leftImages = ['/image01.png', '/image02.png']
-  const rightImages = ['/image03.png', '/image04.png']
+  const leftImages = ['/project-1.png', '/project-2.png']
+  const rightImages = ['/project-3.png', '/project-4.png']
   const allImages = [...leftImages, ...rightImages]
 
   return (
