@@ -100,12 +100,13 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 12px;
+  font-size: clamp(8px, 2.5vw, 12px); /* Responsive font size */
   font-weight: 700;
   color: rgba(17, 24, 39, 0.8);
   position: relative;
   z-index: 20;
   padding: 0.5rem 0;
+  white-space: nowrap; /* Prevent wrapping */
 }
 
 /* -------- HERO STAGE (Main Content) -------- */
@@ -151,7 +152,7 @@
   top: clamp(32px, 4vw, 50px);
   transform: translateX(-50%);
   white-space: nowrap;
-  font-size: clamp(58px, 9vw, 130px);
+  font-size: clamp(36px, 9vw, 130px); /* Reduced minimum from 58px to 36px */
   font-weight: 500;
   font-style: italic;
   line-height: 0.95;
@@ -393,12 +394,12 @@
 
 @media (min-width: 1280px) {
   .hero-badge--left {
-  left: 28%;
-}
+    left: 28%;
+  }
 
-.hero-badge--right {
-  right: 28%;
-}
+  .hero-badge--right {
+    right: 28%;
+  }
 
   .hero-badge--bottom {
     bottom: 5%;
@@ -591,7 +592,7 @@
 @media (min-width: 768px) {
   .hero-availability {
     position: absolute;
-    left: 1.5rem;
+    left: .8rem;
     top: 50%;
     transform: translateY(-50%);
     margin-top: 0;
@@ -638,26 +639,34 @@
     top: 50%;
     transform: translateY(-50%);
     margin-top: 0;
-    width: min(320px, 40vw);
+    width: min(240px, 40vw);
     text-align: left;
   }
 }
 
 /* Social Proof */
 .hero-social {
-  position: absolute;
-  left: 1.5rem;
-  bottom: 1.5rem;
+  position: relative;
   z-index: 10;
-  display: none;
-  max-width: 360px;
-  align-items: flex-start;
-  gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
-  .hero-social {
-    display: flex;
+   .hero-social {
+    position: absolute;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.75rem;
+    max-width: 360px;
+    margin-top: 0;
+    text-align: left;
   }
 }
 
@@ -846,7 +855,7 @@
   overflow: hidden;
   vertical-align: baseline;
   min-width: 50px;
-  height: 1.2em;
+  height: 1em;
 }
 
 @media (min-width: 640px) {
@@ -904,4 +913,5 @@
     transform: none !important;
     filter: none !important;
   }
+  
 }

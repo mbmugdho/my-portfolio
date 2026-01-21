@@ -36,7 +36,7 @@
   align-items: center;
   gap: 3rem;
   width: max-content;
-  animation: marqueeLeft 25s linear infinite;
+  animation: marqueeLeft 35s linear infinite;
 }
 
 .logo-marquee:hover .logo-marquee-track {
@@ -126,14 +126,14 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    height: 520px;
+    height: 660px;
   }
 }
 
 @media (min-width: 1024px) {
   .work-columns {
     gap: 2rem;
-    height: 580px;
+    height: 700px;
   }
 }
 
@@ -168,12 +168,12 @@
 
 /* Going Up */
 .vmarquee-track--up {
-  animation: marqueeUp var(--duration, 20s) linear infinite;
+  animation: marqueeUp var(--duration, 30s) linear infinite;
 }
 
 /* Going Down */
 .vmarquee-track--down {
-  animation: marqueeDown var(--duration, 20s) linear infinite;
+  animation: marqueeDown var(--duration, 30s) linear infinite;
 }
 
 @keyframes marqueeUp {
@@ -262,14 +262,14 @@
   display: flex;
   gap: 1rem;
   width: max-content;
-  animation: marqueeLeft 20s linear infinite;
+  animation: marqueeLeft 30s linear infinite;
 }
 
 .mobile-card {
   position: relative;
   flex-shrink: 0;
   width: 280px;
-  height: 175px;
+  height: 220px;
   overflow: hidden;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.9);

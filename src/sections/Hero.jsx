@@ -38,7 +38,7 @@ export default function Hero() {
                 <span className="hero-badge-icon">
                   <Users size={11} />
                 </span>
-                <span>10+ Users Served</span>
+                <span>10+ Clients Served</span>
               </div>
 
               {/* Left */}
@@ -111,7 +111,7 @@ export default function Hero() {
               </span>
             </div>
             <p className="hero-social-text">
-              Trusted by over <strong>12+</strong> happy clients across
+              Trusted by over <strong>10+</strong> happy clients across
               residential and commercial projects.
             </p>
           </div>

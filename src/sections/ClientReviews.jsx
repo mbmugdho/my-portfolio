@@ -1,4 +1,3 @@
-// src/sections/ClientReviews.jsx
 'use client'
 
 import Image from 'next/image'
@@ -61,13 +60,7 @@ export default function ClientReviews() {
                 </div>
               </div>
 
-              {/* Quote Mark */}
-              <span
-                className="ml-auto text-[26px] font-bold text-gray-800/90 leading-none -translate-y-1.5"
-                aria-hidden="true"
-              >
-                &ldquo;
-              </span>
+              
             </div>
           </div>
 
@@ -81,13 +74,7 @@ export default function ClientReviews() {
             </p>
 
             <div className="mt-5 flex items-center gap-3 md:justify-end">
-              {/* Quote Mark - Different position on mobile vs desktop */}
-              <span
-                className="hidden md:block text-[26px] font-bold text-gray-800/90 leading-none -translate-y-1.5"
-                aria-hidden="true"
-              >
-                &ldquo;
-              </span>
+              
 
               {/* Avatar */}
               <div className="w-9 h-9 rounded-full overflow-hidden bg-gray-800/10 flex-shrink-0">
@@ -110,13 +97,7 @@ export default function ClientReviews() {
                 </div>
               </div>
 
-              {/* Quote Mark - Mobile only */}
-              <span
-                className="md:hidden ml-auto text-[26px] font-bold text-gray-800/90 leading-none -translate-y-1.5"
-                aria-hidden="true"
-              >
-                &ldquo;
-              </span>
+              
             </div>
           </div>
         </div>

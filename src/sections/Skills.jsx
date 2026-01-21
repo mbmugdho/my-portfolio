@@ -16,15 +16,15 @@ const skillCategories = [
     title: 'Backend',
     icon: Server,
     accent: 'accent-green',
-    percent: 88,
-    skills: ['Node.js', 'Express.js', 'MongoDB', 'REST APIs'],
+    percent: 70,
+    skills: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'REST APIs'],
   },
   {
     title: 'Tools & Others',
     icon: Wrench,
     accent: 'accent-purple',
-    percent: 92,
-    skills: ['Git/GitHub', 'VS Code', 'Figma', 'Vercel'],
+    percent: 96,
+    skills: ['Git/GitHub', 'VS Code', 'Figma', 'Vercel', 'Photoshop/Ai'],
   },
 ]
 

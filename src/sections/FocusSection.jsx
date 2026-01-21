@@ -21,10 +21,8 @@ const BoltIcon = () => (
    ================================ */
 function SkillPill({ colorClass, label }) {
   return (
-    <div className="inline-flex items-center gap-1.5 rounded-full bg-white px-2 py-1.5 text-[10px] shadow-[0_14px_26px_rgba(0,0,0,0.10)] ring-1 ring-black/5 sm:gap-2 sm:px-3 sm:py-2 sm:text-[11px] md:px-4 md:text-[13px] hover:scale-105 transition-transform duration-300">
-      <span
-        className={`grid h-4 w-4 place-items-center rounded-full sm:h-5 sm:w-5 md:h-6 md:w-6 ${colorClass}`}
-      >
+    <div className="skill-pill">
+      <span className={`skill-pill-icon ${colorClass}`}>
         <BoltIcon />
       </span>
       <span className="whitespace-nowrap font-medium text-black/80">
@@ -66,24 +64,24 @@ function FloatingPill({
 export default function FocusSection() {
   const left = [
     {
-      label: 'Product Design',
-      colorClass: 'bg-orange-500',
+      label: 'Frontend',
+      colorClass: 'skill-pill-icon--orange',
       indent: true,
       duration: 3.5,
       direction: 'up',
       delay: 0,
     },
     {
-      label: 'UX Design',
-      colorClass: 'bg-sky-500',
+      label: 'UI & UX',
+      colorClass: 'skill-pill-icon--sky',
       indent: false,
       duration: 4,
       direction: 'down',
       delay: 0.5,
     },
     {
-      label: 'User Research',
-      colorClass: 'bg-neutral-700',
+      label: 'Components',
+      colorClass: 'skill-pill-icon--neutral',
       indent: true,
       duration: 3.8,
       direction: 'up',
@@ -94,23 +92,23 @@ export default function FocusSection() {
   const right = [
     {
       label: 'Design Systems',
-      colorClass: 'bg-yellow-400',
+      colorClass: 'skill-pill-icon--yellow',
       indent: true,
       duration: 3.6,
       direction: 'down',
       delay: 0.3,
     },
     {
-      label: 'Usability Testing',
-      colorClass: 'bg-pink-500',
+      label: 'Responsive',
+      colorClass: 'skill-pill-icon--pink',
       indent: false,
       duration: 4.2,
       direction: 'up',
       delay: 0.8,
     },
     {
-      label: 'Brand Identity',
-      colorClass: 'bg-green-500',
+      label: 'Performance',
+      colorClass: 'skill-pill-icon--green',
       indent: true,
       duration: 3.4,
       direction: 'down',
@@ -119,14 +117,16 @@ export default function FocusSection() {
   ]
 
   return (
-    <section className="relative overflow-hidden">
-      <div className="relative mx-auto max-w-7xl pt-5 pb-2 md:pt-7 md:pb-5">
+    <section className="focus-section">
+      <div className="focus-container">
         {/* Left pills */}
-        <div className="pointer-events-none absolute left-1 top-1/2 flex -translate-y-1/2 flex-col gap-6 sm:left-2 sm:gap-8 md:left-4 md:gap-12 lg:left-8 xl:left-16">
-          {left.map((item) => (
+        <div className="focus-pills-left">
+          {left.map((item, index) => (
             <div
               key={item.label}
-              style={{ marginLeft: item.indent ? '15px' : '0px' }}
+              className={`focus-pill-item ${
+                item.indent ? 'focus-pill-item--indent-left' : ''
+              }`}
             >
               <FloatingPill
                 duration={item.duration}
@@ -140,11 +140,13 @@ export default function FocusSection() {
         </div>
 
         {/* Right pills */}
-        <div className="pointer-events-none absolute right-1 top-1/2 flex -translate-y-1/2 flex-col items-end gap-6 sm:right-2 sm:gap-8 md:right-4 md:gap-12 lg:right-8 xl:right-16">
-          {right.map((item) => (
+        <div className="focus-pills-right">
+          {right.map((item, index) => (
             <div
               key={item.label}
-              style={{ marginRight: item.indent ? '15px' : '0px' }}
+              className={`focus-pill-item ${
+                item.indent ? 'focus-pill-item--indent-right' : ''
+              }`}
             >
               <FloatingPill
                 duration={item.duration}
@@ -158,14 +160,12 @@ export default function FocusSection() {
         </div>
 
         {/* Center text */}
-        <div className="mx-auto max-w-[280px] text-center sm:max-w-[400px] md:max-w-[500px] lg:max-w-[650px] xl:max-w-[750px]">
-          <p className="mb-2 text-base italic text-black/80 sm:mb-6 sm:text-lg md:text-xl [font-family:var(--font-serif),Georgia,serif]">
-            Hello!
-          </p>
-          <h2 className="text-balance text-[18px] font-medium leading-[1.3] tracking-[-0.02em] text-black/90 sm:text-[22px] md:text-[28px] lg:text-[36px] xl:text-[44px] md:leading-[1.2]">
+        <div className="focus-text">
+          <p className="focus-greeting">Hello!</p>
+          <h2 className="focus-heading">
             Focus is on combining clear strategy, scalable frontend development,
             and user empathy to{' '}
-            <span className="font-normal text-black/30">
+            <span className="focus-heading-fade">
               create fast, intuitive web experiences that actually work
             </span>
           </h2>

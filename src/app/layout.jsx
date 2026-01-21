@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from 'next/font/google'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import AppShell from 'tailwind/components/animations/AppShell'
+import Script from 'next/script'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,15 +34,33 @@ export default function RootLayout({ children }) {
     >
       <body className="font-sans antialiased">
         <AppShell>
-        {/* Fixed Navbar - Outside of main flow */}
-        <Navbar />
+          {/* Fixed Navbar - Outside of main flow */}
+          <Navbar />
 
-        {/* Main Content */}
-        <main>{children}</main>
+          {/* Main Content */}
+          <main>{children}</main>
 
-        {/* Footer */}
-        <Footer />
+          {/* Footer */}
+          <Footer />
         </AppShell>
+
+        <Script
+          id="tawk-to"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+      (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/69710aef7c706719837b63b7/1jfgp5erc';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+      })();
+    `,
+          }}
+        />
       </body>
     </html>
   )

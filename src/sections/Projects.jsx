@@ -1,81 +1,107 @@
 // src/sections/Projects.jsx
-"use client";
+'use client'
 
-import { useEffect, useRef } from "react";
-import Image from "next/image";
-import "../styles/projects.css";
+import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
+import '../styles/projects.css'
 
 const projectsData = [
   {
     id: 1,
-    title: "HomeHero",
+    title: 'BabyBloom',
     description:
-      "A full-stack home services platform connecting homeowners with trusted service providers. Features include booking management, real-time chat, and secure payment integration.",
-    image: "/project-1.png",
-    liveUrl: "https://homehero-org.netlify.app/",
-    techStack: ["React", "Node.js", "Express", "MongoDB"],
-    type: "Full-Stack MERN",
+      'A modern e-commerce platform for baby products built with Next.js. Features include product catalog, shopping cart, wishlist, secure checkout, and user authentication with a beautiful, responsive design.',
+    image: '/project-1.png',
+    liveUrl: 'https://babybloom-ltd.vercel.app/',
+    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'MongoDB'],
+    type: 'Next.js E-Commerce',
   },
   {
     id: 2,
-    title: "SafeHands",
+    title: 'HomeHero',
     description:
-      "A Next.js powered platform for connecting caregivers with families. Built with server-side rendering for optimal performance and SEO, featuring advanced search and filtering capabilities.",
-    image: "/project-2.png",
-    liveUrl: "https://safehands-ltd.vercel.app/",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB"],
-    type: "Next.js Full-Stack",
+      'A full-stack home services platform connecting homeowners with trusted service providers. Features include booking management, real-time chat, and secure payment integration.',
+    image: '/project-2.png',
+    liveUrl: 'https://homehero-org.netlify.app/',
+    techStack: ['React', 'Node.js', 'Express', 'MongoDB'],
+    type: 'Full-Stack MERN',
   },
   {
     id: 3,
-    title: "AssetVerse",
+    title: 'SafeHands',
     description:
-      "A comprehensive digital asset management system built with the MERN stack. Includes user authentication, asset tracking, analytics dashboard, and team collaboration features.",
-    image: "/project-3.png",
-    liveUrl: "https://assetverse.vercel.app/",
-    techStack: ["React", "Node.js", "Express", "MongoDB"],
-    type: "Full-Stack MERN",
+      'A Next.js powered platform for connecting caregivers with families. Built with server-side rendering for optimal performance and SEO, featuring advanced search and filtering capabilities.',
+    image: '/project-3.png',
+    liveUrl: 'https://safehands-ltd.vercel.app/',
+    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'MongoDB'],
+    type: 'Next.js Full-Stack',
   },
   {
     id: 4,
-    title: "GameHub",
+    title: 'AssetVerse',
     description:
-      "An interactive gaming community platform where users can discover games, read reviews, and connect with fellow gamers. Features dynamic content loading and responsive design.",
-    image: "/project-4.png",
-    liveUrl: "https://gamehub-net.netlify.app/",
-    techStack: ["React", "JavaScript", "REST API", "CSS3"],
-    type: "Frontend React",
+      'A comprehensive digital asset management system built with the MERN stack. Includes user authentication, asset tracking, analytics dashboard, and team collaboration features.',
+    image: '/project-4.png',
+    liveUrl: 'https://assetverse.vercel.app/',
+    techStack: ['React', 'Node.js', 'Express', 'MongoDB'],
+    type: 'Full-Stack MERN',
   },
-];
+  {
+    id: 5,
+    title: 'GameHub',
+    description:
+      'An interactive gaming community platform where users can discover games, read reviews, and connect with fellow gamers. Features dynamic content loading and responsive design.',
+    image: '/project-5.png',
+    liveUrl: 'https://gamehub-net.netlify.app/',
+    techStack: ['React', 'JavaScript', 'REST API', 'CSS3'],
+    type: 'Frontend React',
+  },
+]
 
 const Projects = () => {
-  const cardsRef = useRef([]);
+  const cardsRef = useRef([])
+  const [currentPage, setCurrentPage] = useState(0)
+  const projectsPerPage = 4
+  const totalPages = Math.ceil(projectsData.length / projectsPerPage)
+
+  const visibleProjects = projectsData.slice(
+    currentPage * projectsPerPage,
+    (currentPage + 1) * projectsPerPage
+  )
 
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "0px",
+      rootMargin: '0px',
       threshold: 0.1,
-    };
+    }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("animate-in");
+          entry.target.classList.add('animate-in')
         }
-      });
-    }, observerOptions);
+      })
+    }, observerOptions)
 
     cardsRef.current.forEach((card) => {
-      if (card) observer.observe(card);
-    });
+      if (card) observer.observe(card)
+    })
 
-    return () => observer.disconnect();
-  }, []);
+    return () => observer.disconnect()
+  }, [currentPage])
 
   const handleCardClick = (url) => {
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
+  const handlePrevPage = () => {
+    setCurrentPage((prev) => Math.max(0, prev - 1))
+  }
+
+  const handleNextPage = () => {
+    setCurrentPage((prev) => Math.min(totalPages - 1, prev + 1))
+  }
 
   return (
     <section id="projects" className="projects-section">
@@ -94,20 +120,20 @@ const Projects = () => {
 
         {/* Project Cards Grid */}
         <div className="projects-grid">
-          {projectsData.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <a
               key={project.id}
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
               ref={(el) => {
-                cardsRef.current[index] = el;
+                cardsRef.current[index] = el
               }}
               className="project-card"
               style={{ animationDelay: `${index * 0.15}s` }}
               onClick={(e) => {
-                e.preventDefault();
-                handleCardClick(project.liveUrl);
+                e.preventDefault()
+                handleCardClick(project.liveUrl)
               }}
             >
               {/* Project Image */}
@@ -181,10 +207,92 @@ const Projects = () => {
           ))}
         </div>
 
+        {/* Pagination Controls */}
+        <div className="pagination-container">
+          <button
+            className={`pagination-arrow pagination-prev ${
+              currentPage === 0 ? 'disabled' : ''
+            }`}
+            onClick={handlePrevPage}
+            disabled={currentPage === 0}
+            aria-label="Previous projects"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
+          </button>
+
+          <div className="pagination-dots">
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index}
+                className={`pagination-dot ${
+                  currentPage === index ? 'active' : ''
+                }`}
+                onClick={() => setCurrentPage(index)}
+                aria-label={`Go to page ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            className={`pagination-arrow pagination-next ${
+              currentPage === totalPages - 1 ? 'disabled' : ''
+            }`}
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages - 1}
+            aria-label="Next projects"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Hire Me Buttons */}
+        <div className="hire-me-buttons">
+          <a
+            href="https://www.fiverr.com/s/lj4Bpre"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-button"
+          >
+            Hire me on Fiverr
+          </a>
+          <a
+            href="https://www.upwork.com/freelancers/~01a30eb7a52b4891a0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-button"
+          >
+            Hire me on Upwork
+          </a>
+        </div>
+
         
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Projects;
+export default Projects

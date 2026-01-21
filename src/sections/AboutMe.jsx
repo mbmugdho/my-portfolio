@@ -66,8 +66,9 @@ export default function AboutMe() {
           <span className="who__titleSoft">since 2021</span>
         </h2>
 
+        {/* Grid Layout */}
         <div className="who__rowLayout">
-          {/* LEFT */}
+          {/* LEFT - Image */}
           <motion.div
             className="who__left"
             initial={{ opacity: 0, y: 14 }}
@@ -140,7 +141,7 @@ export default function AboutMe() {
             </div>
           </motion.div>
 
-          {/* RIGHT - Bio + Timeline + Education (all inside for desktop) */}
+          {/* RIGHT - Bio only */}
           <motion.div
             className="who__right"
             initial={{ opacity: 0, y: 14 }}
@@ -149,49 +150,47 @@ export default function AboutMe() {
             transition={{ duration: 0.55, delay: 0.05 }}
           >
             <p className="who__bio">
-              A frontend developer who started with design and gradually fell in
-              love with code. My background in design shapes how I think about
-              structure, spacing, and interaction, while my development skills
-              allow me to turn ideas into fast, responsive, and accessible web
-              experiences. I enjoy building interfaces that feel intuitive and
-              polished—where clean visuals, solid logic, performance, and
-              genuine user empathy work together to solve real-world problems.
+              Started with design, fell in love with code. Now I craft responsive, accessible web experiences—where aesthetics, logic, and user empathy come together.
             </p>
+          </motion.div>
 
-            {/* Timeline + Education - Inside right column */}
-            <div className="who__bottomGrid">
-              <div
-                className="who__timeline"
-                role="list"
-                aria-label="Experience timeline"
-              >
-                {timeline.map((item) => (
-                  <div
-                    className="who__item"
-                    role="listitem"
-                    key={`${item.role}-${item.from}`}
-                  >
-                    <div className="who__role">{item.role}</div>
-                    <div className="who__company">{item.company}</div>
-                    <div className="who__dates">
-                      <span className="who__year">{item.from}</span>
-                      <span className="who__arrow">→</span>
-                      <span className="who__year">{item.to}</span>
-                    </div>
+          {/* BOTTOM - Timeline + Education (sibling, not nested) */}
+          <motion.div
+            className="who__bottomGrid"
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.55, delay: 0.1 }}
+          >
+            <div
+              className="who__timeline"
+              role="list"
+              aria-label="Experience timeline"
+            >
+              {timeline.map((item) => (
+                <div
+                  className="who__item"
+                  role="listitem"
+                  key={`${item.role}-${item.from}`}
+                >
+                  <div className="who__role">{item.role}</div>
+                  <div className="who__company">{item.company}</div>
+                  <div className="who__dates">
+                    <span className="who__year">{item.from}</span>
+                    <span className="who__arrow">→</span>
+                    <span className="who__year">{item.to}</span>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
+            </div>
 
-              <div className="who__edu" aria-label="Education">
-                <h3 className="who__eduTitle">
-                  <strong>Education</strong>
-                </h3>
-                <p className="who__eduText">
-                  Bachelor's degree in <strong>Management</strong> from National
-                  University, Bangladesh, with a strong foundation in
-                  problem-solving, communication, and analytical thinking.
-                </p>
-              </div>
+            <div className="who__edu" aria-label="Education">
+              <h3 className="who__eduTitle"><strong>Education</strong></h3>
+              <p className="who__eduText">
+                Bachelor's degree in <strong>Management</strong> from National University,
+                Bangladesh, with a strong foundation in problem-solving,
+                communication, and analytical thinking.
+              </p>
             </div>
           </motion.div>
         </div>

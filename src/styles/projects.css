@@ -76,11 +76,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(
-    160deg,
-    #1a1f2e 0%,
-    #0f1219 100%
-  );
+  background: linear-gradient(160deg, #1a1f2e 0%, #0f1219 100%);
   border-radius: 1.5rem;
   overflow: hidden;
   cursor: pointer;
@@ -88,8 +84,7 @@
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   opacity: 0;
   transform: translateX(80px);
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 20px 50px -15px rgba(0, 0, 0, 0.25);
 }
 
@@ -110,10 +105,8 @@
 
 .project-card:hover {
   transform: translateY(-12px);
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 35px 60px -20px rgba(0, 0, 0, 0.35),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 35px 60px -20px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 /* ===== Card Inner Glow on Hover ===== */
@@ -314,7 +307,7 @@
 
 /* ===== Divider Line ===== */
 .project-content::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 1.75rem;
@@ -370,6 +363,103 @@
 
 .cta-button:hover svg {
   transform: translateX(4px);
+}
+
+/* ===== PAGINATION STYLES ===== */
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.pagination-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.1),
+    rgba(6, 182, 212, 0.1)
+  );
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #3b82f6;
+}
+
+.pagination-arrow svg {
+  width: 24px;
+  height: 24px;
+}
+
+.pagination-arrow:hover:not(.disabled) {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.2),
+    rgba(6, 182, 212, 0.2)
+  );
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #1d4ed8;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.pagination-arrow:active:not(.disabled) {
+  transform: scale(0.95);
+}
+
+.pagination-arrow.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #94a3b8;
+}
+
+.pagination-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pagination-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-dot:hover {
+  background: rgba(59, 130, 246, 0.5);
+  transform: scale(1.2);
+}
+
+.pagination-dot.active {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  transform: scale(1.3);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
+
+.project-counter {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.project-counter span {
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* ===== Responsive ===== */
@@ -439,6 +529,32 @@
     padding: 0.875rem 1.75rem;
     font-size: 0.9rem;
   }
+
+  /* Pagination Mobile */
+  .pagination-container {
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .pagination-arrow {
+    width: 44px;
+    height: 44px;
+  }
+
+  .pagination-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .pagination-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .project-counter {
+    font-size: 0.75rem;
+  }
+  /* Base: mobile-first (keep as-is: left aligned) */
 }
 
 /* ===== Reduced Motion ===== */
@@ -459,8 +575,24 @@
   .project-link,
   .link-arrow,
   .cta-button,
-  .card-glow {
+  .card-glow,
+  .pagination-arrow,
+  .pagination-dot {
     transition: none;
   }
 }
+.hire-me-buttons {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem; /* smaller gap for mobile */
+  justify-content: flex-start;
+}
 
+/* md and up: center + bigger gap (≈ Tailwind gap-5) */
+@media (min-width: 768px) {
+  .hire-me-buttons {
+    justify-content: center;
+    gap: 1.25rem; /* 1.25rem ≈ Tailwind gap-5 */
+  }
+}
